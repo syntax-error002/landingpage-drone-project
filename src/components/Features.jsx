@@ -5,33 +5,33 @@ import { Eye, Monitor, Activity, Cpu, Disc, Wifi } from 'lucide-react';
 const features = [
     {
         icon: <Eye className="w-8 h-8 text-drone-cyan" />,
-        title: "Computer Vision Pipeline",
-        desc: "Utilizing YOLOv8 (Large) architecture for high-fidelity inference with a mean Average Precision (mAP) of 0.89."
+        title: "Smart Object Detection",
+        desc: "Uses advanced AI (YOLOv8) to spot people and objects with high accuracy."
     },
     {
         icon: <Monitor className="w-8 h-8 text-drone-green" />,
-        title: "Telemetry Visualization",
-        desc: "Real-time overlay of serialized data streams, visualizing bounding boxes and confidence intervals on the edge."
+        title: "Live Data Overlay",
+        desc: "See exactly what the drone sees with boxes drawn around detected objects in real-time."
     },
     {
         icon: <Activity className="w-8 h-8 text-drone-red" />,
-        title: "Predictive Tracking",
-        desc: "Kalman filter-based state estimation for smoothing bounding box trajectories and reducing jitter."
+        title: "Smooth Target Tracking",
+        desc: "Keeps track of moving objects smoothly, even if they move fast or are partly hidden."
     },
     {
         icon: <Cpu className="w-8 h-8 text-purple-500" />,
-        title: "Edge Optimization",
-        desc: "Mobile-grade quantization ensuring steady inference rates on restrained thermal envelopes."
+        title: "Battery Efficient",
+        desc: "Designed to run on the drone without draining the battery too quickly."
     },
     {
         icon: <Disc className="w-8 h-8 text-yellow-400" />,
-        title: "Operational Modes",
-        desc: "Discrete control states allowing for single-shot high-resolution analysis or continuous survey throughput."
+        title: "Flexible Modes",
+        desc: "Switch between detailed analysis or fast scanning depending on what you need."
     },
     {
         icon: <Wifi className="w-8 h-8 text-blue-500" />,
-        title: "Low-Latency Transport",
-        desc: "Optimized WebSocket protocol adhering to strict millisecond-level round-trip time (RTT) constraints."
+        title: "Instant Connection",
+        desc: "Sends data back to you instantly so you know what's happening right now."
     }
 ];
 
@@ -53,15 +53,53 @@ const Features = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="p-8 rounded-lg bg-drone-slate/20 border border-drone-slate/50 hover:border-drone-cyan/50 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(0,243,255,0.1)] h-full"
+                            className="group relative h-full"
                         >
-                            <div className="mb-6 p-4 rounded-full bg-drone-black/50 w-fit border border-drone-slate group-hover:scale-110 transition-transform">
-                                {feature.icon}
+                            {/* Nakasi - Carved Border Effect */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-drone-cyan/40 via-purple-500/20 to-amber-500/40 rounded-lg p-[1px] opacity-60 group-hover:opacity-100 transition-opacity duration-500" style={{ willChange: "opacity" }}>
+                                <div className="absolute inset-0 bg-drone-black rounded-lg m-[1px]" />
                             </div>
-                            <h3 className="text-xl font-bold mb-3 text-white group-hover:text-drone-cyan transition-colors">{feature.title}</h3>
-                            <p className="text-gray-400 leading-relaxed">
-                                {feature.desc}
-                            </p>
+
+                            <div className="relative h-full bg-drone-black/80 backdrop-blur-md p-8 rounded-lg overflow-hidden">
+                                {/* Geometric Pattern Overlay */}
+                                <div className="absolute inset-0 opacity-5 pointer-events-none">
+                                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <pattern id="hex" x="0" y="0" width="20" height="34.6" patternUnits="userSpaceOnUse">
+                                                <path d="M10 0L20 5V15L10 20L0 15V5L10 0Z" fill="none" stroke="currentColor" strokeWidth="1" className="text-drone-cyan" />
+                                            </pattern>
+                                        </defs>
+                                        <rect width="100%" height="100%" fill="url(#hex)" />
+                                    </svg>
+                                </div>
+
+                                {/* Nakasi Corner Accents */}
+                                <div className="absolute top-0 right-0 p-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M0 0H20V20" stroke="#F59E0B" strokeWidth="2" />
+                                        <rect x="14" y="4" width="2" height="2" fill="#F59E0B" />
+                                    </svg>
+                                </div>
+                                <div className="absolute bottom-0 left-0 p-2 rotate-180 opacity-50 group-hover:opacity-100 transition-opacity">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M0 0H20V20" stroke="#F59E0B" strokeWidth="2" />
+                                        <rect x="14" y="4" width="2" height="2" fill="#F59E0B" />
+                                    </svg>
+                                </div>
+
+                                <div className="mb-6 relative">
+                                    {/* Icon Halo */}
+                                    <div className="absolute -inset-4 bg-drone-cyan/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <div className="relative p-4 rounded-lg bg-gradient-to-br from-drone-slate/30 to-drone-black border border-drone-slate/50 w-fit group-hover:border-amber-400/50 transition-colors duration-300">
+                                        {feature.icon}
+                                    </div>
+                                </div>
+
+                                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-amber-400 transition-colors tracking-wide">{feature.title}</h3>
+                                <p className="text-gray-400 leading-relaxed font-light group-hover:text-gray-300 transition-colors relative z-10">
+                                    {feature.desc}
+                                </p>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

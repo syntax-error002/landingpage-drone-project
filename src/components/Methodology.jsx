@@ -5,23 +5,23 @@ import { Database, Cpu, Scan, Map } from 'lucide-react';
 const steps = [
     {
         icon: <Scan className="w-6 h-6 text-drone-cyan" />,
-        title: "Input Acquisition",
-        desc: "High-resolution video feed capture via on-board drone camera (1080p/4K @ 60fps) with mechanical gimbal stabilization."
+        title: "Capturing Video",
+        desc: "The drone's camera captures high-quality video (4K) while flying."
     },
     {
-        icon: <Cpu className="w-6 h-6 text-drone-green" />,
-        title: "Preprocessing & Inference",
-        desc: "Adaptive histogram equalization followed by quantized YOLOv8l inference on the Edge AI accelerator."
+        icon: <Cpu className="w-6 h-6 text-amber-400" />,
+        title: "AI Processing",
+        desc: "The on-board computer improves the image and uses AI to find objects instantly."
     },
     {
-        icon: <Map className="w-6 h-6 text-purple-500" />,
-        title: "Spatial Localization",
-        desc: "Mapping scale-invariant bounding boxes to geodetic coordinates using telemetry and altitude sensor fusion."
+        icon: <Map className="w-6 h-6 text-drone-cyan" />,
+        title: "Location Mapping",
+        desc: "Calculates the exact GPS location of every object found on the ground."
     },
     {
-        icon: <Database className="w-6 h-6 text-yellow-400" />,
-        title: "Data Serialization",
-        desc: "JSON-based metadata packet transmission via low-latency HTTP/WebSocket bridge to the ground station."
+        icon: <Database className="w-6 h-6 text-amber-500" />,
+        title: "Sending Results",
+        desc: "Sends a small text file with the results to the ground station immediately."
     }
 ];
 
@@ -35,7 +35,7 @@ const Methodology = () => {
                 <div className="text-center mb-20">
                     <h2 className="text-3xl md:text-4xl font-light mb-4 tracking-tight">System Architecture</h2>
                     <p className="text-gray-400 max-w-2xl mx-auto font-light">
-                        A modular pipeline designed for autonomous aerial reconnaissance and real-time biological target analysis.
+                        A simple modular system designed for autonomous scouting and real-time analysis.
                     </p>
                 </div>
 
@@ -51,20 +51,33 @@ const Methodology = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.2 }}
-                                className="relative bg-drone-black border border-drone-slate p-6 rounded-sm hover:border-drone-cyan/50 transition-colors group"
+                                className="relative group p-6"
                             >
-                                {/* Step Number Badge */}
-                                <div className="absolute -top-3 -right-3 w-8 h-8 flex items-center justify-center bg-drone-slate text-xs font-mono rounded-full border border-drone-black group-hover:bg-drone-cyan group-hover:text-black transition-colors">
-                                    0{index + 1}
+                                {/* Nakasi Border */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-drone-cyan/30 via-transparent to-amber-500/30 rounded-lg p-[1px]">
+                                    <div className="absolute inset-0 bg-drone-black rounded-lg m-[1px]" />
                                 </div>
 
-                                <div className="mb-4 bg-drone-slate/20 w-fit p-3 rounded-sm group-hover:scale-110 transition-transform duration-300">
-                                    {step.icon}
+                                {/* Step Number - Gold Hexagon */}
+                                <div className="absolute -top-4 -right-2 w-10 h-10 flex items-center justify-center z-20">
+                                    <div className="absolute inset-0 bg-drone-black border border-amber-500 clip-path-hexagon shadow-[0_0_10px_rgba(245,158,11,0.3)]" style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}></div>
+                                    <span className="relative z-10 text-amber-400 font-mono font-bold">0{index + 1}</span>
                                 </div>
-                                <h3 className="text-lg font-medium text-white mb-2">{step.title}</h3>
-                                <p className="text-sm text-gray-500 leading-relaxed font-light">
-                                    {step.desc}
-                                </p>
+
+                                <div className="relative z-10">
+                                    <div className="mb-4 bg-drone-slate/10 w-fit p-3 rounded-lg border border-drone-slate/30 group-hover:border-amber-500/50 group-hover:bg-amber-500/10 transition-all duration-300">
+                                        {step.icon}
+                                    </div>
+                                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">{step.title}</h3>
+                                    <p className="text-sm text-gray-500 leading-relaxed font-light group-hover:text-gray-400 transition-colors">
+                                        {step.desc}
+                                    </p>
+                                </div>
+
+                                {/* Decorative Corner */}
+                                <div className="absolute bottom-2 right-2 p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <div className="w-1.5 h-1.5 bg-drone-cyan rotate-45"></div>
+                                </div>
                             </motion.div>
                         ))}
                     </div>

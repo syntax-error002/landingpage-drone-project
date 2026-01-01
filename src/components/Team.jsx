@@ -88,49 +88,55 @@ const Team = () => {
                             key={index}
                             variants={itemVariants}
                             whileHover={{ y: -10 }}
-                            className="group relative bg-drone-slate/10 backdrop-blur-md border border-drone-slate/30 p-8 rounded-2xl w-full text-center transition-all duration-300 hover:border-drone-cyan/50 hover:shadow-[0_0_30px_rgba(0,243,255,0.15)]"
+                            className="group relative"
                         >
-                            {/* Hover Corner Accents */}
-                            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-transparent group-hover:border-drone-cyan transition-colors duration-300 rounded-tl-lg" />
-                            <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-transparent group-hover:border-drone-cyan transition-colors duration-300 rounded-tr-lg" />
-                            <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-transparent group-hover:border-drone-cyan transition-colors duration-300 rounded-bl-lg" />
-                            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-transparent group-hover:border-drone-cyan transition-colors duration-300 rounded-br-lg" />
+                            {/* Gold/Cyan Gradient Border Background */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-drone-cyan via-purple-500 to-amber-500 rounded-2xl p-[1px] opacity-30 group-hover:opacity-100 transition-opacity duration-500 blur-sm group-hover:blur-md"></div>
 
-                            {/* Image Container with Rotating Ring */}
-                            <div className="relative w-32 h-32 mx-auto mb-6">
-                                <motion.div
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                                    className="absolute inset-0 rounded-full border border-dashed border-drone-cyan/30"
-                                />
-                                <motion.div
-                                    animate={{ rotate: -360 }}
-                                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                                    className="absolute -inset-2 rounded-full border border-dotted border-drone-slate/50"
-                                />
+                            <div className="relative h-full bg-drone-black/90 backdrop-blur-xl border border-drone-slate/30 p-8 rounded-2xl w-full text-center overflow-hidden">
 
-                                <div className="absolute inset-1 rounded-full overflow-hidden border border-drone-cyan/20 bg-drone-black z-10">
-                                    {member.img ? (
-                                        <img src={member.img} alt={member.name} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center text-gray-400 group-hover:text-drone-cyan transition-colors">
-                                            <User size={40} />
-                                        </div>
-                                    )}
+                                {/* Royal Corner Accents */}
+                                <div className="absolute top-0 left-0 w-8 h-8 border-t-[3px] border-l-[3px] border-drone-cyan/30 group-hover:border-amber-400 transition-colors duration-500 rounded-tl-xl" />
+                                <div className="absolute top-0 right-0 w-8 h-8 border-t-[3px] border-r-[3px] border-drone-cyan/30 group-hover:border-amber-400 transition-colors duration-500 rounded-tr-xl" />
+                                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[3px] border-l-[3px] border-drone-cyan/30 group-hover:border-amber-400 transition-colors duration-500 rounded-bl-xl" />
+                                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[3px] border-r-[3px] border-drone-cyan/30 group-hover:border-amber-400 transition-colors duration-500 rounded-br-xl" />
+
+                                {/* Image Container with Gold/Cyan Ring */}
+                                <div className="relative w-32 h-32 mx-auto mb-6">
+                                    <motion.div
+                                        animate={{ rotate: 360 }}
+                                        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-0 rounded-full border-2 border-dashed border-drone-cyan/30 group-hover:border-amber-400/50 transition-colors duration-500"
+                                    />
+                                    <motion.div
+                                        animate={{ rotate: -360 }}
+                                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                        className="absolute -inset-2 rounded-full border border-dotted border-drone-slate/50 group-hover:border-amber-200/30 transition-colors duration-500"
+                                    />
+
+                                    <div className="absolute inset-1.5 rounded-full overflow-hidden border-2 border-drone-slate bg-drone-black z-10 group-hover:border-amber-400 transition-colors duration-500">
+                                        {member.img ? (
+                                            <img src={member.img} alt={member.name} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                                        ) : (
+                                            <div className="w-full h-full flex items-center justify-center text-gray-400 group-hover:text-amber-400 transition-colors">
+                                                <User size={40} />
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-drone-cyan transition-colors">{member.name}</h3>
-                            <div className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-200 text-xs font-mono uppercase tracking-widest mb-4 font-semibold">{member.role}</div>
-                            <p className="text-sm text-gray-400 font-light leading-relaxed mb-6 group-hover:text-gray-300 transition-colors">
-                                {member.desc}
-                            </p>
+                                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors tracking-wide">{member.name}</h3>
+                                <div className="text-transparent bg-clip-text bg-gradient-to-r from-drone-cyan to-blue-400 group-hover:from-amber-200 group-hover:to-yellow-500 text-xs font-mono uppercase tracking-widest mb-4 font-bold transition-all duration-500">{member.role}</div>
+                                <p className="text-sm text-gray-400 font-light leading-relaxed mb-6 group-hover:text-gray-300 transition-colors">
+                                    {member.desc}
+                                </p>
 
-                            {/* Social Placeholders */}
-                            <div className="flex justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                <a href="#" className="text-gray-500 hover:text-white transition-colors"><Github size={18} /></a>
-                                <a href="#" className="text-gray-500 hover:text-blue-400 transition-colors"><Linkedin size={18} /></a>
-                                <a href="#" className="text-gray-500 hover:text-drone-cyan transition-colors"><Mail size={18} /></a>
+                                {/* Social Placeholders */}
+                                <div className="flex justify-center gap-4 opacity-50 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                    <a href="#" className="p-2 rounded-full bg-drone-slate/10 hover:bg-white hover:text-black transition-all"><Github size={16} /></a>
+                                    <a href="#" className="p-2 rounded-full bg-drone-slate/10 hover:bg-[#0077b5] hover:text-white transition-all"><Linkedin size={16} /></a>
+                                    <a href="#" className="p-2 rounded-full bg-drone-slate/10 hover:bg-amber-500 hover:text-black transition-all"><Mail size={16} /></a>
+                                </div>
                             </div>
                         </motion.div>
                     ))}
